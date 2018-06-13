@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
+using HotelBot.Dialogs;
 
 namespace HotelBot
 {
@@ -16,10 +17,12 @@ namespace HotelBot
     /// </summary>
     public async Task<HttpResponseMessage> Post([FromBody]Activity activity)
     {
+    
       if (activity.Type == ActivityTypes.Message)
       {
         //await Conversation.SendAsync(activity, () => new Dialogs.RootDialog());
-        await Conversation.SendAsync(activity, () => new Dialogs.GreetingsDialog());
+        //await Conversation.SendAsync(activity, () => new Dialogs.GreetingsDialog());
+        await Conversation.SendAsync(activity, () => HotelBookingDialog.dialog);
       }
       else
       {

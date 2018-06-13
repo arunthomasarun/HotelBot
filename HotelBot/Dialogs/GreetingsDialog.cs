@@ -14,35 +14,43 @@ namespace HotelBot.Dialogs
     public async Task StartAsync(IDialogContext context)
     {
       await context.PostAsync("Hi, This is a bot developed by Arun");
+      await Respond(context);
       context.Wait(MessageReceivedAsync);
     }
 
-    private async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> result)
+    public static async Task Respond(IDialogContext context)
     {
-      var message = await result;
+      var userName = string.Empty;
+      context.UserData.TryGetValue<string>("Name", out userName);
+
+      if (string.IsNullOrEmpty(userName))
+      {
+        await context.PostAsync("What's Your Name?");
+        context.UserData.SetValue<bool>("GetName", true);
+      }
+      else
+      {
+        await context.PostAsync($"Hi {userName}. How Can I Help You Today? ");
+      }
+    }
+    public async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> argument)
+    {
+      var message = await argument;
       var userName = string.Empty;
       var getName = false;
 
-      context.UserData.TryGetValue<Boolean>("GetName", out getName); 
       context.UserData.TryGetValue<string>("Name", out userName);
+      context.UserData.TryGetValue<bool>("GetName", out getName);
 
       if (getName)
       {
         userName = message.Text;
-        context.UserData.SetValue("Name", userName);
-        context.UserData.SetValue("GetName", false);
+        context.UserData.SetValue<string>("Name", userName);
+        context.UserData.SetValue<bool>("GetName", false);
       }
 
-      if (string.IsNullOrEmpty(userName))
-      {
-        await context.PostAsync("What is your name?");
-        context.UserData.SetValue<Boolean>("GetName", true);
-      }
-      else
-      {
-        await context.PostAsync(string.Format("Hi {0}, how can I help you today?", userName));
-      }
-      context.Wait(MessageReceivedAsync);
+      await Respond(context);
+      context.Done(message);
     }
   }
 }
