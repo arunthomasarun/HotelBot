@@ -135,6 +135,7 @@
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Dialogs\GreetingsDialog.cs" />
     <Compile Include="Dialogs\HotelBookingDialog.cs" />
+    <Compile Include="Dialogs\LUISDialog.cs" />
     <Compile Include="Dialogs\RootDialog.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

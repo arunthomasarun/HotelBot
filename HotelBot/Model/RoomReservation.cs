@@ -16,11 +16,11 @@ namespace HotelBot.Model
 
   public enum ExtraAmneties
   {
-    SwimmingPool,
-    Gym,
-    Library,
-    WiFi,
-    Laundry
+    swimmingpool,
+    gym,
+    library,
+    wifi,
+    laundry
   }
 
   [Serializable]
