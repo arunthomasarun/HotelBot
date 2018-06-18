@@ -31,6 +31,7 @@ namespace HotelBot.Dialogs
       else
       {
         await context.PostAsync($"Hi {userName}. How Can I Help You Today? ");
+        
       }
     }
     public async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> argument)

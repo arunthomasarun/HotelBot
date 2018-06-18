@@ -3,7 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
+using Microsoft.Bot.Builder.Dialogs;
+using System.Threading.Tasks;
 
 namespace HotelBot.Model
 {
@@ -35,8 +36,14 @@ namespace HotelBot.Model
     public static IForm<RoomReservation> BuildForm()
     {
       return new FormBuilder<RoomReservation>()
-        .Message("Welcome to the booking section!!!")
+        .Message("Welcome to the booking section!!! Alternatively you can visit [Hotel Site](www.arunthomas.com) for booking.")
+        .OnCompletion(async(context, state) =>
+        {
+          await context.PostAsync($"Booking done for {state.NoOfOccupants} on {state.CheckInDate.ToString()}");
+        })
         .Build();
    }
+
+   
   }
 }

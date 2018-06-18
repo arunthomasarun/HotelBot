@@ -240,3 +240,8 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/HotelBot/Properties/PublishProfiles/HotelBot20180614052955 - Web Deploy (2).pubxml
+/HotelBot/Properties/PublishProfiles/HotelBot20180614052955 - Web Deploy (3).pubxml
+/HotelBot/Properties/PublishProfiles/HotelBot20180614052955 - Web Deploy (4).pubxml
+/HotelBot/Properties/PublishProfiles/HotelBot20180614052955 - Web Deploy (5).pubxml
+/HotelBot/Properties/PublishProfiles/HotelBot20180614052955 - Web Deploy.pubxml

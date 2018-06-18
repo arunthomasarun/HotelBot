@@ -25,6 +25,11 @@ namespace HotelBot
         //await Conversation.SendAsync(activity, () => new Dialogs.RootDialog());
         //await Conversation.SendAsync(activity, () => new Dialogs.GreetingsDialog());
         //await Conversation.SendAsync(activity, () => HotelBookingDialog.dialog);
+        
+        //below commented code not working.
+        //activity.TextFormat = "markdown";
+        //activity.Text += "You can also visit [Hotel Site](www.arunthomas.com) for booking";
+
         await Conversation.SendAsync(activity, MakeLuisDialog);
       }
       else

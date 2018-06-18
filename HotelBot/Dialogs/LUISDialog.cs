@@ -11,7 +11,7 @@ using System.Web;
 
 namespace HotelBot.Dialogs
 {
-  [LuisModel("cba28", "505dc0")]
+  [LuisModel("cb28", "500")]
   [Serializable]
   public class LUISDialog : LuisDialog<RoomReservation>
   {

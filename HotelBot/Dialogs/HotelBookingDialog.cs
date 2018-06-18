@@ -27,6 +27,7 @@ namespace HotelBot.Dialogs
             {
               return Chain.ContinueWith(FormDialog.FromForm(RoomReservation.BuildForm, FormOptions.PromptInStart), AfterBookingContinuation);
             }))
+           
             .Unwrap()
             .PostToUser();
 
@@ -36,7 +37,7 @@ namespace HotelBot.Dialogs
       var name = "User";
       context.UserData.TryGetValue<string>("Name", out name);
       //context.UserData.TryGetValue<>
-      return Chain.Return($"Thanks For Using Hotel Bot {name}. Redirecting to Booking Section");
+      return Chain.Return($"Thanks For Using Hotel Bot {name}. Redirecting to Booking Section.");
 
     }
     private async static Task<IDialog<string>> AfterBookingContinuation(IBotContext context, IAwaitable<object> item)
